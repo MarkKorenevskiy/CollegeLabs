@@ -1,8 +1,45 @@
-﻿@{
+﻿@model TipModel
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <h1 class="mb-4">Tip calculator</h1>
+            <form asp-action="Index" method="post">
+                <div class="row mb-3">
+                    <label asp-for="CostOfMeal" class="col-form-label col-md-4">Cost of meal</label>
+                    <div class="col-md-8">
+                        <input asp-for="CostOfMeal" class="form-control">
+                    </div>
+                    <span asp-validation-for="CostOfMeal"></span>
+                </div>
+                <div class="row mb-3">
+                    <label class="col-form-label col-md-4">15% tip: </label>
+                    <div class="col-md-8">
+                        <input class="form-control" value="@Model.Tip15.ToString("C2")" readonly>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label class="col-form-label col-md-4">20% tip: </label>
+                    <div class="col-md-8">
+                        <input class="form-control" value="@Model.Tip20.ToString("C2")" readonly>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label class="col-form-label col-md-4">25% tip: </label>
+                    <div class="col-md-8">
+                        <input class="form-control" value="@Model.Tip25.ToString("C2")" readonly>
+                    </div>
+                </div>
+                <div class="row gap-3">
+                    <div class="col-md-6 offset-md-3">
+                        <button class="btn btn-secondary" type="submit">Calculate</button>
+                        <a class="btn btn-outline-secondary" asp-action="Index">Clear</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
